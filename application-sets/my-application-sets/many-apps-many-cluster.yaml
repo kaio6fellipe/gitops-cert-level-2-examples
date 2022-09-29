@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: cluster-git
+  namespace: argocd
 spec:
   generators:
     # matrix 'parent' generator
@@ -13,7 +14,7 @@ spec:
               repoURL: https://github.com/codefresh-contrib/gitops-cert-level-2-examples.git
               revision: HEAD
               directories:
-                - path: application-sets/examples-apps/*
+                - path: ./application-sets/examples-apps/*
           # cluster generator, 'child' #2
   template:
     metadata:
